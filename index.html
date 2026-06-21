@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PAI CBT 45 Soal</title>
+
+<style>
+body{font-family:Arial;margin:0;background:#eef2f5}
+header{background:#14532d;color:#fff;text-align:center;padding:15px}
+.container{max-width:900px;margin:auto;background:#fff;padding:20px}
+.question{border:1px solid #ddd;padding:15px;margin-bottom:15px;border-radius:8px}
+img{width:100%;border-radius:10px;margin:10px 0}
+button{background:#14532d;color:#fff;padding:12px;border:none;border-radius:6px;cursor:pointer}
+button:hover{background:#0f3d22}
+.result{font-size:20px;font-weight:bold;margin-top:20px}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>PENDIDIKAN AGAMA ISLAM - CBT 45 SOAL</h2>
+</header>
+
+<div class="container">
+
+<img src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae" alt="PAI">
+
+<div id="quiz"></div>
+
+<button onclick="submitQuiz()">Kirim Jawaban</button>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<script>
+
+const questions = [
+{
+q:`1. Sikap melakukan amal ibadah dengan tujuan ingin dilihat atau dipuji oleh orang lain disebut...`,
+o:["Sum'ah","Riya","Takabbur","Hasad","Ujub"],a:1},
+
+{
+q:`2. Berikut ini yang merupakan dampak negatif dari sifat hasad adalah...`,
+o:["Menambah keberkahan rezeki","Memakan kebaikan seperti api memakan kayu bakar","Mempererat tali persaudaraan","Membuat hati menjadi tenang","Meningkatkan derajat di mata manusia"],a:1},
+
+{
+q:`3. Rasa takut kepada siksa Allah SWT namun disertai dengan harapan akan rahmat-Nya disebut keseimbangan antara...`,
+o:["Syukur dan Sabar","Khauf dan Raja’","Tawakal dan Ikhtiar","Iman dan Islam","Ihsan dan Takwa"],a:1},
+
+{
+q:`4. Munculnya rasa tenang saat menyerahkan segala urusan kepada Allah setelah berusaha maksimal disebut...`,
+o:["Raja'","Khauf","Tawakal","Qana’ah","Istiqamah"],a:2},
+
+{
+q:`5. Prinsip utama dalam asuransi syariah adalah takaful, yang artinya...`,
+o:["Jual beli risiko","Saling menanggung atau tolong menolong","Mencari keuntungan sebesar-besarnya","Pengalihan risiko sepenuhnya","Investasi modal asing"],a:1},
+
+{
+q:`6. Perbedaan utama antara bunga bank konvensional dengan bagi hasil bank syariah terletak pada...`,
+o:["Jumlah nominalnya","Tempat transaksinya","Akad dan kepastian nisbah keuntungan","Waktu pembayarannya","Jenis mata uang yang digunakan"],a:2},
+
+{
+q:`7. Lembaga keuangan mikro yang beroperasi berdasarkan prinsip bagi hasil dan bertujuan meningkatkan ekonomi umat disebut...`,
+o:["Bank Umum","Koperasi Syariah (BMT)","Asuransi Jiwa","Pegadaian Konvensional","Pasar Modal"],a:1},
+
+{
+q:`8. Tokoh ulama yang menyebarkan Islam di wilayah Jawa dan menggunakan media seni wayang sebagai sarana dakwah adalah...`,
+o:["Sunan Gresik","Sunan Ampel","Sunan Kalijaga","Sunan Giri","Sunan Gunung Jati"],a:2},
+
+{
+q:`9. Keteladanan yang dapat diambil dari ulama Nusantara dalam menyebarkan Islam adalah dakwah yang dilakukan secara...`,
+o:["Paksaan dan kekerasan","Monopoli perdagangan","Damai dan akulturasi budaya","Menjauhi masyarakat lokal","Fokus pada kalangan bangsawan saja"],a:2},
+
+{
+q:`10. Salah satu bukti sejarah masuknya Islam di Indonesia pada abad ke-13 adalah adanya...`,
+o:["Candi Borobudur","Batu nisan Sultan Malik As-Saleh","Prasasti Kebon Kopi","Kitab Negarakertagama","Patung Gajah Mada"],a:1},
+
+{
+q:`11. Perasaan khawatir atau takut akan siksa dan murka Allah SWT atas kemaksiatan yang dilakukan disebut...`,
+o:["Raja’","Khauf","Tawakal","Syukur","Sabar"],a:1},
+
+{
+q:`12. Berharap mendapatkan rahmat, ampunan, dan surga Allah SWT dengan senantiasa melakukan amal saleh disebut sifat...`,
+o:["Khauf","Raja’","Ikhtiar","Tawadhu","Qana’ah"],a:1},
+
+{
+q:`13. Sikap yang tepat dalam menggabungkan sifat khauf dan raja’ bagi seorang mukmin adalah...`,
+o:["Hanya mengandalkan harapan tanpa takut dosa","Terlalu takut sehingga berputus asa dari rahmat-Nya","Menyeimbangkan keduanya agar ibadah tetap terjaga dan tidak sombong","Mengutamakan khauf saat usia muda dan raja’ saat usia tua","Meninggalkan ikhtiar karena yakin akan ampunan Allah"],a:2},
+
+{
+q:`14. Salah satu tanda orang yang memiliki sifat raja' dalam kehidupannya adalah...`,
+o:["Bermalas-malasan dalam beribadah karena yakin pasti diampuni","Merasa paling benar dan suci di hadapan manusia","Semangat melakukan ketaatan meski menghadapi kesulitan","Selalu merasa cemas akan nasibnya di akhirat tanpa berusaha","Mengabaikan larangan Allah karena menganggap-Nya Maha Pengampun"],a:2},
+
+{
+q:`15. Setelah melakukan usaha maksimal (ikhtiar), seorang mukmin menyerahkan segala hasilnya kepada ketetapan Allah SWT. Sikap ini disebut...`,
+o:["Sabar","Qana'ah","Tawakal","Istiqamah","Syukur"],a:2},
+
+{
+q:`16. Tawakal yang benar dalam ajaran Islam dilakukan pada saat...`,
+o:["Sebelum melakukan usaha apa pun","Sambil melakukan maksiat agar diringankan siksanya","Setelah melakukan usaha sungguh-sungguh dan berdoa","Hanya jika usaha tersebut menghasilkan keuntungan besar","Saat merasa putus asa karena gagal berulang kali"],a:2},
+
+{
+q:`17. Sifat khauf yang berlebihan tanpa disertai raja’ dapat mengakibatkan seseorang...`,
+o:["Bersikap sombong dan takabbur","Berputus asa dari rahmat Allah SWT","Meremehkan dosa-dosa kecil","Terlalu cinta pada dunia","Menjadi hamba yang sangat bersyukur"],a:1},
+
+{
+q:`18. Manfaat utama memiliki sifat tawakal bagi kondisi kejiwaan seseorang adalah...`,
+o:["Menjadi kaya raya dalam waktu singkat","Terhindar dari segala bentuk musibah dunia","Mendapatkan ketenangan hati dan tidak mudah stres saat gagal","Dihormati oleh seluruh lapisan masyarakat","Mendapatkan kekuasaan yang besar"],a:2},
+
+{
+q:`19. Ayat Al-Qur'an yang menjelaskan perintah untuk bertawakal kepada Allah bagi orang-orang mukmin adalah...`,
+o:["Q.S. Al-Baqarah: 183","Q.S. Ali Imran: 159","Q.S. Al-Ma'un: 1-3","Q.S. Al-Fil: 1","Q.S. Al-Ikhlas: 1"],a:1},
+
+{
+q:`20. Seorang siswa belajar keras untuk ujian kemudian berdoa dan berserah diri. Jika hasilnya tidak sesuai harapan, ia tetap tenang. Ia telah mengamalkan...`,
+o:["Raja' tanpa ikhtiar","Khauf yang berlebihan","Tawakal yang hakiki","Kepasrahan tanpa tujuan","Keberuntungan semata"],a:2},
+
+{
+q:`21. Segala bentuk transaksi keuangan dalam Islam harus terhindar dari maysir, yang artinya...`,
+o:["Ketidakpastian atau penipuan","Perjudian atau untung-untungan","Bunga bank yang berlipat ganda","Kerja sama bagi hasil","Jual beli barang haram"],a:1},
+
+{
+q:`22. Transaksi yang mengandung unsur gharar dilarang dalam Islam karena adanya...`,
+o:["Unsur riba yang sangat tinggi","Kerja sama yang tidak adil","Ketidakjelasan atau ketidakpastian dalam objek akad","Kelebihan pembayaran yang dipersyaratkan","Kerugian sepihak dalam modal"],a:2},
+
+{
+q:`23. Kelebihan atau tambahan pembayaran tanpa ada imbalan disebut...`,
+o:["Laba","Bonus","Riba","Ujrah","Wakalah"],a:2},
+
+{
+q:`24. Akad kerja sama pemilik modal dan pengelola disebut...`,
+o:["Murabahah","Mudharabah","Musyarakah","Wadiah","Ijarah"],a:1},
+
+{
+q:`25. Prinsip ekonomi syariah mengutamakan...`,
+o:["Keuntungan pribadi","Persaingan","Keadilan, kemaslahatan umat, dan transparansi","Bunga rendah","Investor asing"],a:2},
+
+{
+q:`26. Wadiah artinya...`,
+o:["Pinjaman modal","Titipan murni yang harus dijaga","Kredit","Sewa","Investasi"],a:1},
+
+{
+q:`27. Takaful adalah...`,
+o:["Jual beli risiko","Saling menanggung dan tolong-menolong","Saham ilegal","Hutang piutang","Alih tanggung jawab"],a:1},
+
+{
+q:`28. Syarat bank syariah adalah adanya...`,
+o:["Kantor di Arab","Semua pegawai muslim","Dewan Pengawas Syariah (DPS)","Tanpa jaminan","Untung harian"],a:2},
+
+{
+q:`29. Musyarakah adalah...`,
+o:["Pinjaman","Kerja sama modal bersama","Sewa","Jual beli","Hibah"],a:1},
+
+{
+q:`30. Keunggulan koperasi syariah adalah...`,
+o:["Bunga tinggi","Hanya untuk kaya","Penghapusan riba dan bagi hasil","Tanpa administrasi","Tanpa pengawasan"],a:2},
+
+{
+q:`31. Teori masuknya Islam dari Arab disebut teori...`,
+o:["Gujarat","Persia","Mekkah","China","Eropa"],a:2},
+
+{
+q:`32. Bapak Wali Songo adalah...`,
+o:["Kalijaga","Giri","Ampel","Bonang","Muria"],a:2},
+
+{
+q:`33. Sabilal Muhtadin ditulis oleh...`,
+o:["Yusuf","Arsyad al-Banjari","Singkili","Raniri","Fansuri"],a:1},
+
+{
+q:`34. Sunan Kudus melakukan...`,
+o:["Merusak candi","Paksaan agama","Larangan penyembelihan sapi","Mengasingkan diri","Perang"],a:2},
+
+{
+q:`35. Bustanus Salatin ditulis oleh...`,
+o:["Fansuri","Nuruddin ar-Raniri","Singkili","Nawawi","Khatib"],a:1},
+
+{
+q:`36. Ulama berperan sebagai...`,
+o:["Pedagang curang","Tentara bayaran","Penasihat raja","Kolektor","Penambang"],a:2},
+
+{
+q:`37. Media dakwah Sunan Kalijaga...`,
+o:["Perang","Perdagangan","Wayang kulit dan gamelan","Debat","Puisi"],a:2},
+
+{
+q:`38. Abdur Rauf as-Singkili berjasa...`,
+o:["Perang","Terjemahan Al-Qur’an Melayu","Kerajaan","Aksara Jawa","Rempah"],a:1},
+
+{
+q:`39. Strategi dakwah sukses karena...`,
+o:["Asimilasi total","Akulturasi budaya","Ancaman","Upeti","Elit"],a:1},
+
+{
+q:`40. Istiqamah artinya...`,
+o:["Menyerah","Teguh pendirian","Buruk","Dunia","Harta"],a:1},
+
+{
+q:`41. Jelaskan perbedaan mendasar antara sifat riya dan sum’ah...`,
+o:["Riya untuk dilihat, sum’ah untuk didengar","Sama","Tidak ada beda","Keduanya baik","Tidak tahu"],a:0},
+
+{
+q:`42. Mengapa khauf dan raja’ harus seimbang...`,
+o:["Agar malas","Agar ibadah seimbang","Agar takut saja","Agar sombong","Agar bebas"],a:1},
+
+{
+q:`43. Ekonomi syariah lebih adil karena...`,
+o:["Riba","Pembagian risiko","Bunga tinggi","Tanpa aturan","Kapitalisme"],a:1},
+
+{
+q:`44. 3 tokoh ulama penyebar Islam...`,
+o:["Sunan Ampel, Arsyad Banjari, Nuruddin ar-Raniri","Einstein","Newton","Tesla","Trump"],a:0},
+
+{
+q:`45. Cara kejujuran transaksi digital...`,
+o:["Menipu","Amanah dan jujur","Manipulasi","Curang","Spekulasi"],a:1}
+
+];
+
+function load(){
+let q=document.getElementById("quiz");
+questions.forEach((x,i)=>{
+let h=`<div class="question"><h3>${x.q}</h3>`;
+x.o.forEach((o,j)=>{
+h+=`<label><input type="radio" name="q${i}" value="${j}"> ${o}</label><br>`;
+});
+h+=`</div>`;
+q.innerHTML+=h;
+});
+}
+load();
+
+function submitQuiz(){
+let s=0;
+questions.forEach((x,i)=>{
+let a=document.querySelector(`input[name="q${i}"]:checked`);
+if(a&&parseInt(a.value)==x.a)s++;
+});
+document.getElementById("result").innerHTML=`Skor Anda: ${s}/45`;
+}
+
+</script>
+
+</body>
+</html>
